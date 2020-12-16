@@ -1,20 +1,56 @@
 {
   "name": "orinoco",
   "version": "1.0.0",
+  "private": true,
   "description": "",
-  "main": "server.js",
+  "author": "",
   "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
     "backend": "node server/server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "main": "server.js",
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.18.3",
+    "core-js": "^3.6.5",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.8",
     "mongoose-unique-validator": "^2.0.2",
-    "uuid": "^3.3.2"
-  }
+    "uuid": "^3.3.2",
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0-0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "_id": "orinoco@1.0.0",
+  "license": "ISC",
+  "readme": "ERROR: No README data found!"
 }
