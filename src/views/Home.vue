@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1 class="text-xl font-semibold">Nos articles:</h1>
-    <div class="grid md:grid-cols-2 gap-24 mt-10" v-if="items.length">
+    <div class="grid md:grid-cols-2 gap-y-24 md:gap-x-12 mt-10" v-if="items.length">
       <ItemPreview
         v-for="item in items"
         :key="item._id"
