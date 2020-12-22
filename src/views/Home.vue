@@ -9,6 +9,7 @@
         :name="item.name"
         :description="item.description"
         :price="item.price"
+        :itemId="item._id"
       />
     </div>
     <div v-else>No data</div>
@@ -19,7 +20,7 @@
 import ItemPreview from "@/components/ItemPreview.vue";
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     ItemPreview,
   },
@@ -29,7 +30,7 @@ export default {
     };
   },
   methods: {
-    fetchItems() {
+    fetchAllItems() {
       this.$http
         .get("http://localhost:3000/api/teddies")
         .then((response) => (this.items = response.data))
@@ -37,7 +38,7 @@ export default {
     },
   },
   mounted() {
-    this.fetchItems();
+    this.fetchAllItems();
   },
 };
 </script>
