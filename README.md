@@ -18,25 +18,21 @@ Développement de la partie frontend d'un site de e-commerce à partir d'une api
 git clone https://github.com/sebastien-coupe/SebastienCoupe_5_16122020.git orinoco
 ```  
   
-
 ### Se placer à la racine du projet
 ```
 cd orinoco
 ```
   
-
 ### Intaller les dépendances
 ```
 npm install
 ```
   
-
 ### Lancer le serveur fournissant l'api et laisser tourner
 ```
 npm run backend
 ```
   
-
 ### Lancer le serveur de développement pour la partie frontend
 ```
 npm run serve
