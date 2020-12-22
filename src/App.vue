@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <main class="py-8">
+  <main class="text-gray-700 py-8">
     <div class="container max-w-screen-lg px-4 mx-auto">
       <router-view />
     </div>
