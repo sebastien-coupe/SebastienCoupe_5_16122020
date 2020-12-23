@@ -7,7 +7,6 @@
         :key="item._id"
         :img="item.imageUrl"
         :name="item.name"
-        :description="item.description"
         :price="item.price"
         :itemId="item._id"
       />
