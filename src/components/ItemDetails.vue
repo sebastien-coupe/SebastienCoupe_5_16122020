@@ -1,12 +1,11 @@
 <template>
-  <div class="mt-10 md:flex md:gap-8">
+  <div class="mt-10 md:flex md:gap-12">
     <div class="rounded-xl overflow-hidden md:w-2/4">
       <img class="w-full h-full object-cover" :src="image" :alt="name" />
     </div>
     <div class="flex flex-col md:w-2/4">
       <div>
-        <h2 class="mt-2 text-xl font-semibold sm:text-2xl sm:mt-0">{{ name }}</h2>
-        <p class="mt-4"><strong>Description:</strong> {{ description }}</p>
+        <p class="mt-4 md:mt-0"><strong>Description:</strong><br>{{ description }}</p>
       </div>
       <div class="flex justify-between mt-8 md:mt-auto">
         <span class="inline-flex flex-1 items-center justify-center bg-white rounded-md text-xl text-2xl font-semibold">{{ formatPrice(price) }}</span>
@@ -23,7 +22,7 @@
 <script>
 export default {
   name: "ItemDetails",
-  props: ["name", "image", "description", "price"],
+  props: ["image", "description", "price"],
   methods: {
     formatPrice(price) {
       return (price / 100).toFixed(2) + " €"

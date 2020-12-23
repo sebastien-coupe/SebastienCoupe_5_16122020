@@ -4,7 +4,7 @@
       <div class="flex justify-between items-center">
         <router-link class="inline-block" :to="{ name: 'Home' }">
         <img
-          class="w-24 sm:w-32 md:w-auto"
+          class="w-24 sm:w-32"
           src="../assets/orinoco.webp"
           alt="Orinoco logo"
           width="163"

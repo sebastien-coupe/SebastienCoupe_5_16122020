@@ -1,7 +1,7 @@
 <template>
   <div v-if="item">
-    <h1>Détail de l'article "<strong>{{item.name}}</strong>":</h1>
-    <ItemDetails :name="item.name" :image="item.imageUrl" :description="item.description" :price="item.price" />
+    <h1 class="text-xl sm:text-2xl font-semibold text-center uppercase">Détail de l'article "<strong>{{item.name}}</strong>"</h1>
+    <ItemDetails class="mt-10 md:mt-20" :name="item.name" :image="item.imageUrl" :description="item.description" :price="item.price" />
   </div>
   <div v-else>
     Loading...
