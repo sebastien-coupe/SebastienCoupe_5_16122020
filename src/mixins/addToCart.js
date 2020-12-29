@@ -1,16 +1,16 @@
 export default {
   methods: {
-    addToCart() {
+    addToCart(quantity = 1) {
       let itemInformations = {
         id: this.item._id,
         name: this.item.name,
         price: this.item.price,
-        quantity: +this.quantity || 1,
-        total: this.item.price * this.quantity,
+        quantity: +quantity,
+        total: this.item.price * quantity,
       };
 
       this.$store.commit("addItem", itemInformations);
-      console.log(this.$store.state.price);
+      console.log(this.$store.state.cart);
     },
   }
 }

@@ -30,7 +30,7 @@
           >{{ formatPrice(item.price) }}</span
         >
         <button
-          @click="addToCart"
+          @click="addToCart(quantity)"
           class="inline-block bg-blue-200 text-blue-900 px-4 py-2 rounded-md hover:bg-blue-300"
         >
           Ajouter
