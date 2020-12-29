@@ -13,13 +13,24 @@
           <strong>Description:</strong><br />{{ item.description }}
         </p>
       </div>
-      <div class="flex justify-between mt-8 md:mt-auto">
+      <ColorSelector class="mt-8" :colors="item.colors" />
+      <div class="flex justify-between items-center mt-6">
+        <label for="quantity" class="text-sm font-semibold">Quantité:</label>
+        <input
+          type="number"
+          min="1"
+          v-model.number:value="quantity"
+          id="quantity"
+          class="inline-block w-1/4 p-2 bg-transparent border-b text-center"
+        />
+      </div>
+      <div class="flex gap-4 justify-between mt-16 lg:mt-auto">
         <span
           class="inline-flex flex-1 items-center justify-center bg-white rounded-md text-xl text-2xl font-semibold"
           >{{ formatPrice(item.price) }}</span
         >
         <button
-          class="inline-block bg-blue-200 text-blue-900 ml-2 px-4 py-2 rounded-md hover:bg-blue-300"
+          class="inline-block bg-blue-200 text-blue-900 px-4 py-2 rounded-md hover:bg-blue-300"
         >
           Ajouter
         </button>
@@ -29,12 +40,21 @@
 </template>
 
 <script>
+import ColorSelector from "@/components/ColorSelector.vue";
 import formatPrice from "@/mixins/formatPrice.js";
 
 export default {
   name: "ItemDetails",
   mixins: [formatPrice],
   props: ["item"],
+  data() {
+    return {
+      quantity: 1,
+    };
+  },
+  components: {
+    ColorSelector,
+  },
 };
 </script>
 
