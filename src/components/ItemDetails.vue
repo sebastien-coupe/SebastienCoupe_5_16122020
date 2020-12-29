@@ -30,6 +30,7 @@
           >{{ formatPrice(item.price) }}</span
         >
         <button
+          @click="addToCart"
           class="inline-block bg-blue-200 text-blue-900 px-4 py-2 rounded-md hover:bg-blue-300"
         >
           Ajouter
@@ -42,10 +43,11 @@
 <script>
 import ColorSelector from "@/components/ColorSelector.vue";
 import formatPrice from "@/mixins/formatPrice.js";
+import addToCart from "@/mixins/addToCart.js";
 
 export default {
   name: "ItemDetails",
-  mixins: [formatPrice],
+  mixins: [formatPrice, addToCart],
   props: ["item"],
   data() {
     return {

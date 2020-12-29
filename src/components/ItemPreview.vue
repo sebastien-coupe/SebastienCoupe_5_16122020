@@ -19,6 +19,7 @@
         >Détails</router-link
       >
       <button
+        @click="addToCart"
         class="inline-block bg-blue-200 text-blue-900 ml-2 px-4 py-2 rounded-md hover:bg-blue-300"
       >
         Ajouter
@@ -29,10 +30,11 @@
 
 <script>
 import formatPrice from "@/mixins/formatPrice.js";
+import addToCart from "@/mixins/addToCart.js";
 
 export default {
   name: "ItemPreview",
-  mixins: [formatPrice],
+  mixins: [formatPrice, addToCart],
   props: ["item"],
 };
 </script>
