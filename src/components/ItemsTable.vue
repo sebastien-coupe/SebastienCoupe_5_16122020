@@ -27,7 +27,14 @@
         </td>
       </tr>
       <tr class="font-bold">
-        <td></td>
+        <td>
+          <button
+            @click="clearCart"
+            class="bg-red-200 text-red-900 py-2 px-4 rounded-md hover:bg-red-300"
+          >
+            Vider mon panier
+          </button>
+        </td>
         <td></td>
         <td class="py-4 text-center uppercase">Total T.T.C:</td>
         <td class="py-4 text-center">
@@ -45,8 +52,14 @@ import formatPrice from "@/mixins/formatPrice.js";
 
 export default {
   name: "ItemsTable",
+  emits: ["clearCart"],
   mixins: [formatPrice],
   props: ["cart"],
+  methods: {
+    clearCart() {
+      this.$emit("clearCart");
+    },
+  },
 };
 </script>
 

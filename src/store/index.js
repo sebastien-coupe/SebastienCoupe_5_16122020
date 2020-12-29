@@ -13,6 +13,9 @@ export default createStore({
     calculatePrice(state) {
       state.price = 0;
       state.cart.forEach((item) => state.price += item.total)
+    },
+    removeAllItems(state) {
+      state.cart = []
     }
   },
   actions: {
