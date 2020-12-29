@@ -4,13 +4,7 @@
       Détail de l'article "<strong>{{ item.name }}</strong
       >"
     </h1>
-    <ItemDetails
-      class="mt-10 md:mt-20"
-      :name="item.name"
-      :image="item.imageUrl"
-      :description="item.description"
-      :price="item.price"
-    />
+    <ItemDetails class="mt-10 md:mt-20" :item="item" />
   </div>
   <div v-else>Loading...</div>
 </template>
