@@ -20,7 +20,12 @@
           {{ formatPrice(item.price) }}
         </td>
         <td class="text-center py-2">
-          {{ item.quantity }}
+          <input
+            type="number"
+            min="1"
+            :value="item.quantity"
+            class="inline-block w-16 py-2 px-1 rounded-md border text-center"
+          />
         </td>
         <td class="text-center py-2">
           {{ formatPrice(item.price * item.quantity) }}

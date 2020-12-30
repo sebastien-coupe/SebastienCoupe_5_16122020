@@ -8,8 +8,17 @@ export default {
         quantity: +quantity,
       };
 
-      this.$store.commit("addItem", itemInformations);
-      console.log(this.$store.state.cart);
+      // Get index of item in cart
+      let itemIndex = this.$store.state.cart.findIndex(item => item.id === itemInformations.id)
+
+      if (itemIndex === -1) {
+        // Add item to cart if not present
+        this.$store.commit("addItem", itemInformations);
+      } else {
+        // Update item quantity if present
+        let quantity = itemInformations.quantity;
+        this.$store.commit("updateItemQuantity", { quantity, itemIndex })
+      }
     },
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="mt-10 md:flex md:gap-12">
-    <div class="rounded-xl overflow-hidden md:w-2/4">
+    <div class="relative rounded-xl overflow-hidden md:w-2/4">
       <img
         class="w-full h-full object-cover"
         :src="item.imageUrl"
@@ -30,7 +30,7 @@
           >{{ formatPrice(item.price) }}</span
         >
         <button
-          @click="addToCart(quantity)"
+          @click="addItem"
           class="inline-block bg-blue-200 text-blue-900 px-4 py-2 rounded-md hover:bg-blue-300"
         >
           Ajouter
@@ -52,7 +52,14 @@ export default {
   data() {
     return {
       quantity: 1,
+      added: false,
     };
+  },
+  methods: {
+    addItem() {
+      this.added = true;
+      this.addToCart(this.quantity);
+    },
   },
   components: {
     ColorSelector,
