@@ -30,23 +30,20 @@ export default {
   data() {
     return {
       isEmpty: true,
-      cart: {
-        items: null,
-        price: null,
-      },
+      cart: null,
     };
   },
   methods: {
     fetchCartInformations() {
-      if (this.$store.state.cart.length && this.$store.state.price !== 0) {
-        this.cart.items = this.$store.state.cart;
-        this.cart.price = this.$store.state.price;
+      if (this.$store.state.cart.length) {
+        this.cart = this.$store.state.cart;
         this.isEmpty = false;
       }
     },
     cancelCart() {
       this.$store.state.cart = [];
       this.isEmpty = true;
+      this.cart = null;
     },
   },
   mounted() {

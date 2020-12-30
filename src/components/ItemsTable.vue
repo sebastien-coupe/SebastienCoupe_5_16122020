@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in cart.items" :key="item" class="border-b">
+      <tr v-for="item in cart" :key="item" class="border-b">
         <td class="py-2">
           <router-link :to="{ name: 'Product', params: { id: item.id } }">
             <div class="uppercase font-semibold">Peluche "{{ item.name }}"</div>
@@ -23,7 +23,7 @@
           {{ item.quantity }}
         </td>
         <td class="text-center py-2">
-          {{ formatPrice(item.total) }}
+          {{ formatPrice(item.price * item.quantity) }}
         </td>
       </tr>
       <tr class="font-bold">
@@ -39,7 +39,7 @@
         <td class="py-4 text-center uppercase">Total T.T.C:</td>
         <td class="py-4 text-center">
           <div class="text-2xl">
-            {{ formatPrice(cart.price) }}
+            {{ formatPrice(totalPrice) }}
           </div>
         </td>
       </tr>
@@ -52,6 +52,11 @@ import formatPrice from "@/mixins/formatPrice.js";
 
 export default {
   name: "ItemsTable",
+  data() {
+    return {
+      totalPrice: 0,
+    };
+  },
   emits: ["clearCart"],
   mixins: [formatPrice],
   props: ["cart"],
@@ -59,6 +64,14 @@ export default {
     clearCart() {
       this.$emit("clearCart");
     },
+    generateTotalPrice() {
+      this.cart.forEach((item) => {
+        this.totalPrice += item.quantity * item.price;
+      });
+    },
+  },
+  mounted() {
+    this.generateTotalPrice();
   },
 };
 </script>

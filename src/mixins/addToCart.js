@@ -6,7 +6,6 @@ export default {
         name: this.item.name,
         price: this.item.price,
         quantity: +quantity,
-        total: this.item.price * quantity,
       };
 
       this.$store.commit("addItem", itemInformations);
