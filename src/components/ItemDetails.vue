@@ -48,6 +48,7 @@ import addToCart from "@/mixins/addToCart.js";
 export default {
   name: "ItemDetails",
   mixins: [formatPrice, addToCart],
+  emits: ["itemAdded"],
   props: ["item"],
   data() {
     return {
@@ -57,6 +58,7 @@ export default {
   },
   methods: {
     addItem() {
+      this.$emit("itemAdded");
       this.added = true;
       this.addToCart(this.quantity);
     },

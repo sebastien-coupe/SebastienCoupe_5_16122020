@@ -19,7 +19,7 @@
         >Détails</router-link
       >
       <button
-        @click="addToCart(quantity)"
+        @click="addItem"
         class="inline-block bg-blue-200 text-blue-900 ml-2 px-4 py-2 rounded-md hover:bg-blue-300"
       >
         Ajouter
@@ -36,6 +36,13 @@ export default {
   name: "ItemPreview",
   mixins: [formatPrice, addToCart],
   props: ["item"],
+  emits: ["itemAdded"],
+  methods: {
+    addItem() {
+      this.addToCart();
+      this.$emit("itemAdded");
+    },
+  },
 };
 </script>
 
