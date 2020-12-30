@@ -41,7 +41,7 @@ export default {
       }
     },
     cancelCart() {
-      this.$store.state.cart = [];
+      this.$store.commit("removeAllItems");
       this.isEmpty = true;
       this.cart = null;
     },
