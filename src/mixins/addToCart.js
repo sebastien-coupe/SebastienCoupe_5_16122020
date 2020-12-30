@@ -17,7 +17,7 @@ export default {
       } else {
         // Update item quantity if present
         let quantity = itemInformations.quantity;
-        this.$store.commit("updateItemQuantity", { quantity, itemIndex })
+        this.$store.commit("updateItemQuantity", { itemIndex, quantity })
       }
     },
   }

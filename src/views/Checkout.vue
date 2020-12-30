@@ -14,7 +14,7 @@
       </div>
     </div>
     <div v-else class="pt-10 md:pt-20">
-      <ItemsTable :cart="cart" @clearCart="cancelCart" />
+      <ItemsTable @clearCart="cancelCart" />
     </div>
   </div>
 </template>
@@ -30,24 +30,21 @@ export default {
   data() {
     return {
       isEmpty: true,
-      cart: null,
     };
   },
   methods: {
-    fetchCartInformations() {
+    checkCartStatus() {
       if (this.$store.state.cart.length) {
-        this.cart = this.$store.state.cart;
         this.isEmpty = false;
       }
     },
     cancelCart() {
       this.$store.commit("removeAllItems");
       this.isEmpty = true;
-      this.cart = null;
     },
   },
   mounted() {
-    this.fetchCartInformations();
+    this.checkCartStatus();
   },
 };
 </script>

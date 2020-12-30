@@ -9,28 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in cart" :key="item" class="border-b">
-        <td class="py-2">
-          <router-link :to="{ name: 'Product', params: { id: item.id } }">
-            <div class="uppercase font-semibold">Peluche "{{ item.name }}"</div>
-            <div class="text-sm">Ref: {{ item.id }}</div>
-          </router-link>
-        </td>
-        <td class="text-center py-2">
-          {{ formatPrice(item.price) }}
-        </td>
-        <td class="text-center py-2">
-          <input
-            type="number"
-            min="1"
-            :value="item.quantity"
-            class="inline-block w-16 py-2 px-1 rounded-md border text-center"
-          />
-        </td>
-        <td class="text-center py-2">
-          {{ formatPrice(item.price * item.quantity) }}
-        </td>
-      </tr>
+      <TableRow v-for="item in itemsInCart" :key="item" :item="item" />
       <tr class="font-bold">
         <td>
           <button
@@ -53,29 +32,37 @@
 </template>
 
 <script>
+import TableRow from "@/components/TableRow.vue";
 import formatPrice from "@/mixins/formatPrice.js";
 
 export default {
   name: "ItemsTable",
   data() {
     return {
+      itemsInCart: null,
       totalPrice: 0,
     };
   },
+  components: {
+    TableRow,
+  },
   emits: ["clearCart"],
   mixins: [formatPrice],
-  props: ["cart"],
   methods: {
     clearCart() {
       this.$emit("clearCart");
     },
+    fetchCartItems() {
+      this.itemsInCart = this.$store.state.cart;
+    },
     generateTotalPrice() {
-      this.cart.forEach((item) => {
+      this.itemsInCart.forEach((item) => {
         this.totalPrice += item.quantity * item.price;
       });
     },
   },
   mounted() {
+    this.fetchCartItems();
     this.generateTotalPrice();
   },
 };

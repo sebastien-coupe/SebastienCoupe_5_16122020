@@ -8,9 +8,15 @@ export default createStore({
     addItem(state, item) {
       state.cart.push(item)
     },
+
     updateItemQuantity(state, item) {
       state.cart[item.itemIndex].quantity += item.quantity
     },
+
+    setItemQuantity(state, item) {
+      state.cart[item.itemIndex].quantity = item.quantity
+    },
+
     removeAllItems(state) {
       state.cart = []
     }
