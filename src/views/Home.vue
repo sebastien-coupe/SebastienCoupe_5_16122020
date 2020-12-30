@@ -13,7 +13,9 @@
           @itemAdded="openModal"
         />
       </div>
-      <div v-else class="text-center">Chargement...</div>
+      <div v-else class="text-center">
+        <Loader />
+      </div>
     </div>
   </div>
 </template>
@@ -21,12 +23,14 @@
 <script>
 import ConfirmationModal from "@/components/ConfirmationModal.vue";
 import ItemPreview from "@/components/ItemPreview.vue";
+import Loader from "@/components/Loader.vue";
 
 export default {
   name: "Home",
   components: {
     ConfirmationModal,
     ItemPreview,
+    Loader,
   },
   data() {
     return {
