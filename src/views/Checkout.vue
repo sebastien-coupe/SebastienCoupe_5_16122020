@@ -15,17 +15,26 @@
     </div>
     <div v-else class="pt-10 md:pt-20">
       <ItemsTable @clearCart="cancelCart" />
+      <hr class="w-1/4 my-16 mx-auto" />
+      <div class="max-w-screen-sm mx-auto">
+        <h2 class="text-center text-xl">Informations de livraison</h2>
+        <div class="mt-8">
+          <CustomerInfosForm />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import ItemsTable from "@/components/ItemsTable.vue";
+import CustomerInfosForm from "@/components/CustomerInfosForm.vue";
 
 export default {
   name: "Checkout",
   components: {
     ItemsTable,
+    CustomerInfosForm,
   },
   data() {
     return {
