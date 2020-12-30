@@ -10,9 +10,8 @@ export default {
       // Update quantity
       this.$store.commit("setItemQuantity", { itemIndex, quantity })
 
+      // Recalculate cart total price
       this.$store.commit("calculateTotalPrice")
-
-      console.log(this.$store.state.total)
     },
   }
 }
