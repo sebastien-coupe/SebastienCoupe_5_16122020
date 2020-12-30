@@ -9,6 +9,10 @@ export default {
 
       // Update quantity
       this.$store.commit("setItemQuantity", { itemIndex, quantity })
+
+      this.$store.commit("calculateTotalPrice")
+
+      console.log(this.$store.state.total)
     },
   }
 }

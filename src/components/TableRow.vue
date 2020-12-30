@@ -30,6 +30,7 @@ import updateCart from "@/mixins/updateCart.js";
 
 export default {
   name: "TableRow",
+  emits: ["updatePrice"],
   props: ["item"],
   data() {
     return {
@@ -44,6 +45,7 @@ export default {
     updateQuantity() {
       this.updateCart(this.item, this.quantity);
       this.setTotal();
+      this.$emit("updatePrice");
     },
   },
   mounted() {

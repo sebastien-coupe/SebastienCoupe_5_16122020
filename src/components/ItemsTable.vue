@@ -9,7 +9,12 @@
       </tr>
     </thead>
     <tbody>
-      <TableRow v-for="item in itemsInCart" :key="item" :item="item" />
+      <TableRow
+        v-for="item in itemsInCart"
+        :key="item"
+        :item="item"
+        @updatePrice="fetchTotalPrice"
+      />
       <tr class="font-bold">
         <td>
           <button
@@ -55,15 +60,13 @@ export default {
     fetchCartItems() {
       this.itemsInCart = this.$store.state.cart;
     },
-    generateTotalPrice() {
-      this.itemsInCart.forEach((item) => {
-        this.totalPrice += item.quantity * item.price;
-      });
+    fetchTotalPrice() {
+      this.totalPrice = this.$store.state.total;
     },
   },
   mounted() {
     this.fetchCartItems();
-    this.generateTotalPrice();
+    this.fetchTotalPrice();
   },
 };
 </script>

@@ -19,6 +19,11 @@ export default {
         let quantity = itemInformations.quantity;
         this.$store.commit("updateItemQuantity", { itemIndex, quantity })
       }
+
+      this.$store.commit("calculateTotalPrice")
+
+      console.log(this.$store.state.total)
+
     },
   }
 }
