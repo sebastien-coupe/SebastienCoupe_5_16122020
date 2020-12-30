@@ -4,18 +4,17 @@
     <h1 class="text-xl sm:text-2xl font-semibold text-center uppercase">
       Nos articles
     </h1>
-    <div
-      class="grid md:grid-cols-2 gap-y-24 md:gap-x-12 pt-10 md:pt-20"
-      v-if="items.length"
-    >
-      <ItemPreview
-        v-for="item in items"
-        :key="item._id"
-        :item="item"
-        @itemAdded="openModal"
-      />
+    <div class="pt-10 md:pt-20">
+      <div v-if="items" class="grid md:grid-cols-2 gap-y-24 md:gap-x-12">
+        <ItemPreview
+          v-for="item in items"
+          :key="item._id"
+          :item="item"
+          @itemAdded="openModal"
+        />
+      </div>
+      <div v-else class="text-center">Chargement...</div>
     </div>
-    <div v-else>No data</div>
   </div>
 </template>
 
@@ -31,7 +30,7 @@ export default {
   },
   data() {
     return {
-      items: [],
+      items: null,
       modal: false,
     };
   },
