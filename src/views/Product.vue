@@ -16,6 +16,7 @@ import ItemDetails from "@/components/ItemDetails.vue";
 
 export default {
   name: "Product",
+  inheritAttrs: false,
   components: {
     ConfirmationModal,
     ItemDetails,
