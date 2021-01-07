@@ -13,13 +13,25 @@
         >
       </div>
     </div>
+    <div
+      v-else-if="ordered"
+      class="max-w-lg mx-auto mt-12 p-8 text-green-800 bg-green-100 rounded-md border border-green-200"
+    >
+      <h2 class="text-xl text-center">Votre commande a été validée</h2>
+      <p class="mt-6">Orinoco vous remercie pour votre achat.</p>
+      <p class="mt-4">
+        La commande ref: <strong>{{ orderId }}</strong> est en cours de
+        traitement et sera expédié dans les meilleurs délais.
+      </p>
+      <p class="mt-6 text-right">A bientôt sur Orinoco.</p>
+    </div>
     <div v-else class="pt-10 md:pt-20">
       <ItemsTable @clearCart="cancelCart" />
       <hr class="w-1/4 my-16 mx-auto" />
       <div class="max-w-screen-sm mx-auto">
         <h2 class="text-center text-xl">Informations de livraison</h2>
         <div class="mt-8">
-          <CustomerInfosForm />
+          <CustomerInfosForm @ordered="confirmOrder" />
         </div>
       </div>
     </div>
@@ -39,6 +51,7 @@ export default {
   data() {
     return {
       isEmpty: true,
+      ordered: false,
     };
   },
   methods: {
@@ -50,6 +63,11 @@ export default {
     cancelCart() {
       this.$store.commit("removeAllItems");
       this.isEmpty = true;
+    },
+    confirmOrder(orderId) {
+      this.$store.commit("removeAllItems");
+      this.ordered = true;
+      this.orderId = orderId;
     },
   },
   mounted() {
