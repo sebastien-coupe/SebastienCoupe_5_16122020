@@ -14,6 +14,7 @@
         :key="item"
         :item="item"
         @updatePrice="fetchTotalPrice"
+        @removeItem="removeItem"
       />
       <tr class="font-bold">
         <td>
@@ -31,6 +32,7 @@
             {{ formatPrice(totalPrice) }}
           </div>
         </td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -62,6 +64,13 @@ export default {
     },
     fetchTotalPrice() {
       this.totalPrice = this.$store.state.total;
+    },
+    removeItem() {
+      this.fetchTotalPrice();
+
+      if (!this.itemsInCart.length) {
+        this.clearCart();
+      }
     },
   },
   mounted() {

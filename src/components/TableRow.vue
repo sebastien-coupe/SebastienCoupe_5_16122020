@@ -18,8 +18,15 @@
         class="inline-block w-16 py-2 px-1 rounded-md border text-center"
       />
     </td>
-    <td class="text-center py-2">
-      {{ formatPrice(total) }}
+    <td class="text-center py-2">{{ formatPrice(total) }}</td>
+    <td>
+      <button
+        @click="removeItem"
+        class="text-lg text-red-400"
+        title="Supprimer"
+      >
+        &#10006;
+      </button>
     </td>
   </tr>
 </template>
@@ -30,7 +37,7 @@ import updateCart from "@/mixins/updateCart.js";
 
 export default {
   name: "TableRow",
-  emits: ["updatePrice"],
+  emits: ["updatePrice", "removeItem"],
   props: ["item"],
   data() {
     return {
@@ -46,6 +53,11 @@ export default {
       this.updateCart(this.item, this.quantity);
       this.setTotal();
       this.$emit("updatePrice");
+    },
+    removeItem() {
+      this.updateCart(this.item, 0);
+      this.setTotal();
+      this.$emit("removeItem");
     },
   },
   mounted() {

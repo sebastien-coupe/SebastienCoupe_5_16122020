@@ -25,6 +25,10 @@ export default createStore({
       });
     },
 
+    removeItem(state, item) {
+      state.cart.splice(item.itemIndex, 1)
+    },
+
     removeAllItems(state) {
       state.cart = []
     }
